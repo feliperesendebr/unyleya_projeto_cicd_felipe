@@ -23,8 +23,6 @@ variables:
   # Caminho do Dockerfile no seu GitHub (ponto significa raiz)
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   
-  # Define que usaremos uma máquina Ubuntu da Microsoft
-  vmImageName: 'Default'
 
 stages:
 - stage: Build
@@ -32,8 +30,6 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
     steps:
     # A Task Docker@2 gerencia login, build, tag e push automaticamente
     - task: Docker@2
