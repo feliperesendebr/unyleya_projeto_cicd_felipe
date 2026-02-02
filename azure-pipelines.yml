@@ -9,6 +9,9 @@ trigger:
 resources:
 - repo: self
 
+pool:
+  name: 'Default'
+  
 variables:
   # --- ÁREA DE CONFIGURAÇÃO (Edite aqui) ---
   # Nome exato da conexão criada no Passo 2
