@@ -21,7 +21,7 @@ variables:
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   
   # Define que usaremos uma máquina Ubuntu da Microsoft
-  vmImageName: 'ubuntu-latest'
+  vmImageName: 'Default'
 
 stages:
 - stage: Build
