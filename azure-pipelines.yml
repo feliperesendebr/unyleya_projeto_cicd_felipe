@@ -10,19 +10,16 @@ resources:
 - repo: self
 
 pool:
-  name: 'Default'
+  #name: 'Default' -- pra uso com Docker
+  vmImage: 'windows-2019'
   
 variables:
   # --- ÁREA DE CONFIGURAÇÃO (Edite aqui) ---
   # Nome exato da conexão criada no Passo 2
   dockerRegistryServiceConnection: 'ConexaoDockerHub' 
-
-  # Formato: seu-usuario-dockerhub/nome-da-imagem
   imageRepository: 'feliperesendebr/unyleya_projeto_hub_docker' 
-  
-  # Caminho do Dockerfile no seu GitHub (ponto significa raiz)
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-
+  tag: '$(Build.BuildId)'
   webAppName: 'unyleya-app-b327c3fd'
   
 
@@ -42,7 +39,7 @@ stages:
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(Build.BuildId)
+          $(tag)
           latest
 
 - stage: Deploy
@@ -59,4 +56,5 @@ stages:
               inputs:
                 azureSubscription: 'ConexaoAzure'
                 appName: '$(webAppName)'
-                containers: 'feliperesendebr/unyleya_projeto_hub_docker:$(Build.BuildId)'
+                #containers: 'feliperesendebr/unyleya_projeto_hub_docker:$(tag)'
+                imageName: '$(imageRepository):$(tag)'
