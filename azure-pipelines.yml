@@ -16,6 +16,8 @@ variables:
   # --- ÁREA DE CONFIGURAÇÃO (Edite aqui) ---
   # Nome exato da conexão criada no Passo 2
   dockerRegistryServiceConnection: 'ConexaoDockerHub' 
+
+
   
   # Formato: seu-usuario-dockerhub/nome-da-imagem
   imageRepository: 'feliperesendebr/unyleya_projeto_hub_docker' 
@@ -42,3 +44,19 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
+
+- stage: Deploy
+  displayName: Deploy Stage
+  dependsOn: Build 
+  jobs:
+  - deployment: Deploy
+    environment: 'production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: AzureWebAppContainer@1
+              inputs:
+                azureSubscription: 'ConexaoAzure'
+                appName: '$(webAppName)'
+                containers: 'feliperesendebr/unyleya_projeto_hub_docker:$(Build.BuildId)'
