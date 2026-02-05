@@ -1,0 +1,8 @@
+.git
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+Dockerfile
+Jenkinsfile
+azure-pipelines.yml
+main.tf
