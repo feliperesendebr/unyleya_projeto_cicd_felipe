@@ -58,7 +58,8 @@ stages:
 
 - stage: DeployProd
   displayName: Deploy Stage Production
-  dependsOn: DeployDev 
+  dependsOn: DeployDev
+  condition: succeeded()  
   jobs:
   - deployment: DeployProdJob
     environment: 'Production'
