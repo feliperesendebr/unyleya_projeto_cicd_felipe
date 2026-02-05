@@ -19,7 +19,7 @@ variables:
   imageRepository: 'feliperesendebr/unyleya_projeto_hub_docker' 
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
-  webAppName: 'unyleya-app-b327c3fd'
+  webAppName: 'unyleya-app'
   
 
 stages:
