@@ -23,7 +23,7 @@ variables:
   # Caminho do Dockerfile no seu GitHub (ponto significa raiz)
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
 
-  webAppName: 'AGUARDANDO-CRIACAO-VIA-TERRAFORM'
+  webAppName: 'unyleya-app-b327c3fd'
   
 
 stages:
