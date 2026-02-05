@@ -17,13 +17,13 @@ variables:
   # Nome exato da conexão criada no Passo 2
   dockerRegistryServiceConnection: 'ConexaoDockerHub' 
 
-
-  
   # Formato: seu-usuario-dockerhub/nome-da-imagem
   imageRepository: 'feliperesendebr/unyleya_projeto_hub_docker' 
   
   # Caminho do Dockerfile no seu GitHub (ponto significa raiz)
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+
+  webAppName: 'AGUARDANDO-CRIACAO-VIA-TERRAFORM'
   
 
 stages:
