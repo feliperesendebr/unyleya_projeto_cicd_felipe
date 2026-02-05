@@ -8,12 +8,5 @@
 #COPY index.html /usr/share/nginx/html/index.html
 
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2019
-##WORKDIR /inetpub/wwwroot
-##COPY . .
-
-WORKDIR /app
+WORKDIR /inetpub/wwwroot
 COPY . .
-
-SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
-RUN Import-Module WebAdministration; \
-    Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name physicalPath -Value 'C:\app'
